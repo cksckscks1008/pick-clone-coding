@@ -116,6 +116,11 @@ class _TabViewState extends State<TabView> {
     return GestureDetector(
       onTap: () {
         setState(() {
+          if(isClass==false||isOutside==false||isHouse==false) {
+            isHouse=true;
+            isOutside=true;
+            isClass=true;
+          }
           isWeekend = !isWeekend;
         });
       },
@@ -152,6 +157,11 @@ class _TabViewState extends State<TabView> {
     return GestureDetector(
       onTap: () {
         setState(() {
+          if(isWeekend==false||isOutside==false||isHouse==false) {
+            isHouse=true;
+            isOutside=true;
+            isWeekend=true;
+          }
           isClass = !isClass;
         });
       },
@@ -187,6 +197,11 @@ class _TabViewState extends State<TabView> {
     return GestureDetector(
       onTap: () {
         setState(() {
+          if(isClass==false||isWeekend==false||isHouse==false) {
+            isHouse=true;
+            isWeekend=true;
+            isClass=true;
+          }
           isOutside = !isOutside;
         });
       },
@@ -223,6 +238,11 @@ class _TabViewState extends State<TabView> {
     return GestureDetector(
       onTap: () {
         setState(() {
+          if(isClass==false||isOutside==false||isWeekend==false) {
+            isWeekend=true;
+            isOutside=true;
+            isClass=true;
+          }
           isHouse = !isHouse;
         });
       },
