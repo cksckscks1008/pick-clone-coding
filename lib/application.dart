@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pick_clone/Components/_application/Text.dart';
 
 class ApplicationScreen extends StatefulWidget {
   const ApplicationScreen({super.key});
@@ -19,7 +20,7 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
           child: Column(
             children: [
               const SizedBox(height: 15),
-              _buildText(),
+              Texted(),
               const SizedBox(height: 30),
               _buildCard(0, Icons.restaurant, '주말 급식 신청'),
               const SizedBox(height: 25),
@@ -32,15 +33,6 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildText() {
-    return const Row(
-      children: [
-        SizedBox(width: 24),
-        Text('신청', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23)),
-      ],
     );
   }
 

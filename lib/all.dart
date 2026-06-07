@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pick_clone/Components/_all/Floating.dart';
+import 'package:pick_clone/Components/_all/Settingbox.dart';
+import 'package:pick_clone/Components/_mainpage/Profile.dart';
 
 class allscreen extends StatelessWidget {
   const allscreen({super.key});
@@ -7,32 +10,57 @@ class allscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 const SizedBox(height: 30,),
-                _buildProfile('대덕소프트웨어마이스터고', '1학년 2반 16번', '홍성찬'),
+                MainProfile(
+                    school: '대덕소프트웨어마이스터고',
+                    gradeClass: '1학년 2반 16번',
+                    name: '홍성찬'),
                 const SizedBox(height: 30,),
-                _floatingText('도움말'),
+                Floating(text: '도움말'),
                 const SizedBox(height: 20,),
-                _settingBox(CupertinoIcons.smiley_fill, '자습 감독 선생님 확인', Colors.deepPurpleAccent),
+                Settingbox(
+                    icon: CupertinoIcons.smiley_fill,
+                    text: '자습 감독 선생님 확인',
+                    color: Colors.deepPurpleAccent),
                 const SizedBox(height: 30,),
-                _settingBox(CupertinoIcons.speaker_2_fill, '공지사항', Colors.deepPurpleAccent),
+                Settingbox(
+                    icon: CupertinoIcons.speaker_2_fill,
+                    text: '공지사항',
+                    color: Colors.deepPurpleAccent),
                 const SizedBox(height: 30,),
-                _settingBox(Icons.bug_report, '버그 제보', Colors.deepPurpleAccent),
+                Settingbox(
+                    icon: Icons.bug_report,
+                    text: '버그 제보',
+                    color: Colors.deepPurpleAccent),
                 const SizedBox(height: 50,),
-                _floatingText('설정'),
+                Floating(text: '설정'),
                 const SizedBox(height: 20,),
-                _settingBox(CupertinoIcons.slider_horizontal_3, '커스텀', Colors.deepPurpleAccent),
+                Settingbox(
+                    icon: CupertinoIcons.slider_horizontal_3,
+                    text: '커스텀',
+                    color: Colors.deepPurpleAccent),
                 const SizedBox(height: 50,),
-                _floatingText('계정'),
+                Floating(text: '계정'),
                 const SizedBox(height: 20,),
-                _settingBox(Icons.person, '마이 페이지', Colors.deepPurpleAccent),
+                Settingbox(
+                    icon: Icons.person,
+                    text: '마이 페이지',
+                    color: Colors.deepPurpleAccent),
                 const SizedBox(height: 30,),
-                _settingBox(CupertinoIcons.lock_rotation, '비밀번호 변경', Colors.deepPurpleAccent),
+                Settingbox(
+                    icon: CupertinoIcons.lock_rotation,
+                    text: '비밀번호 변경',
+                    color: Colors.deepPurpleAccent),
                 const SizedBox(height: 30,),
-                _settingBox(Icons.logout_rounded, '로그아웃', Colors.red),
+                Settingbox(
+                    icon: Icons.logout_rounded,
+                    text: '로그아웃',
+                    color: Colors.red),
                 const SizedBox(height: 40,),
               ],
             ),
@@ -40,64 +68,4 @@ class allscreen extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildProfile(String school, String gradeClass, String name) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(width: 24),
-        const CircleAvatar(
-          radius: 42,
-          backgroundColor: Color(0xFFB493FF),
-          child: Icon(
-            Icons.person,
-            size: 55,
-            color: Colors.white,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 12),
-              Text(
-                school,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                "$gradeClass $name",
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _floatingText(String text) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const SizedBox(width: 30,),
-        Text('$text', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color.fromRGBO(80, 80, 80, 0.7)),
-        ),
-        ],
-    );
-  }
-
-  Widget _settingBox(IconData icon, String text, Color color) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const SizedBox(width: 35,),
-        Icon(icon, size: 33, color: color,),
-        const SizedBox(width: 20,),
-        Text('$text', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),)
-      ],
-    );
-  }
-
 }

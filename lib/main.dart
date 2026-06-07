@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pick_clone/all.dart';
 import 'package:pick_clone/application.dart';
 import 'package:pick_clone/main_page.dart';
+import 'package:pick_clone/Components/_main/BottomNavigationBar.dart';
 
 void main() {
   runApp(
@@ -36,38 +37,15 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: screens[_index],
       appBar: _buildAppBarChildren(),
-      bottomNavigationBar: _buildBottomNavigationBar(),
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      onTap: (int index) {
-        setState(() {
-          _index = index;
-        });
-        _tabController.animateTo(index);
-      },
-      backgroundColor: Colors.white,
-      type: BottomNavigationBarType.fixed,
-      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.deepPurpleAccent),
-      unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-      selectedItemColor: const Color(0xFF7F4DFF),
-      unselectedItemColor: Colors.blueGrey,
-      currentIndex: _index,
-      items: const [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home), label: '홈'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant), label: '급식'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.check_circle),
-            label: '신청'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month), label: '일정'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.menu), label: '전체'),
-      ],
+      bottomNavigationBar: MainBottomNavigationBar(
+          currentIndex: _index,
+          onTap: (int index) {
+            setState(() {
+              _index = index;
+            });
+            _tabController.animateTo(index);
+            }
+          )
     );
   }
 
